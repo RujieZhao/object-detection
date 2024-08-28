@@ -1,0 +1,10 @@
+# ninja log v5
+0	21713	1720717253704875892	/mnt/ssd1/rujie/pytorch/C++/selection/selection/build/temp.linux-x86_64-cpython-310/selection.o	2b4009cc1a3918
+1	47780	1720717279796378718	/mnt/ssd1/rujie/pytorch/C++/selection/selection/build/temp.linux-x86_64-cpython-310/selection_cuda.o	14cbee75dab597b5
+17	44366	1720721050860404866	/mnt/ssd1/rujie/pytorch/C++/selection/selection/build/temp.linux-x86_64-cpython-310/selection_cuda.o	14cbee75dab597b5
+18	46384	1720731238667602157	/mnt/ssd1/rujie/pytorch/C++/selection/selection/build/temp.linux-x86_64-cpython-310/selection_cuda.o	14cbee75dab597b5
+18	44671	1720732160472836467	/mnt/ssd1/rujie/pytorch/C++/selection/selection/build/temp.linux-x86_64-cpython-310/selection_cuda.o	14cbee75dab597b5
+18	48811	1720733373003607655	/mnt/ssd1/rujie/pytorch/C++/selection/selection/build/temp.linux-x86_64-cpython-310/selection_cuda.o	14cbee75dab597b5
+17	44414	1720734101262012505	/mnt/ssd1/rujie/pytorch/C++/selection/selection/build/temp.linux-x86_64-cpython-310/selection_cuda.o	14cbee75dab597b5
+18	46154	1720734815607596364	/mnt/ssd1/rujie/pytorch/C++/selection/selection/build/temp.linux-x86_64-cpython-310/selection_cuda.o	14cbee75dab597b5
+17	44355	1720735332588950600	/mnt/ssd1/rujie/pytorch/C++/selection/selection/build/temp.linux-x86_64-cpython-310/selection_cuda.o	14cbee75dab597b5

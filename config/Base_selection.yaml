@@ -1,0 +1,73 @@
+MODEL:
+  SELECBACKBONE:
+    ENABLED: False #True False
+    NAME: "build_att_backbone"
+  META_ARCHITECTURE:
+    "selection"
+  SELECTION:
+    STAGEFROZEN: False #False True
+    ALPHA: 3. #2. there is another alpha in selecvisualizer.py line166
+    IOU_THRESHOLDS: [0.6] #0.75 0.6
+    ONEHOT: True
+    MASK_WEIGHT: 1.
+    DELTA_WEIGHT: 2. #5. 1.
+    CLS_WEIGHT: 1.
+    LV_WEIGHT: 1.
+  BACKBONE:
+    NAME: "build_resnet_fpn_backbone"#"build_resnet_backbone"
+    # if freeze is true, it should be set to 5(larger than 5 is ok)
+    FREEZE_AT: 2 #5  2
+    IS_EN: False
+    FL_EN: False
+    MASK_EN: False #True
+    PATCH_SIZE: 4
+  #THe reason I put fpn here is I want to switch FL backbone for fure ablation study.
+  FPN:
+    IN_FEATURES: ["res2", "res3", "res4", "res5"]
+  RESNETS:
+    OUT_FEATURES: [ "res2", "res3", "res4", "res5" ]
+    DEPTH: 101 #101 50
+    #NORM: "BN"
+  ROI_BOX_HEAD:
+    NAME: "FastRCNNConvFCHead"
+    NUM_CONV: 3 #0 3
+    CONV_DIM: 256
+    NUM_FC: 2 #2
+    NORM: "GN" #BN SyncBN FrozenBN GN nnSyncBN naiveSyncBN naiveSyncBN_N
+    POOLER_RESOLUTION: 7
+  IShead:
+    NAME: "IShead" #"IShead" "ISheadStandard"
+    layer: 1
+  FLhead:
+    FL_NUM: 4
+
+DATASETS:
+  TRAIN: ("coco_2017_train",)
+  TEST: ("coco_2017_train",) #("coco_2017_val",)
+
+SOLVER:
+  IMS_PER_BATCH: 1
+  #OPTIMIZER: "ADAM" #"ADAM"
+  BASE_LR: 1e-5 #2e-5 5e-4 2.5e-5
+  WEIGHT_DECAY: 1e-4 #0.0001
+  WARMUP_ITERS: 0
+  WARMUP_FACTOR: 1.0
+  STEPS:  (700000,) #(50000,255000)(50000,)
+  MAX_ITER: 500000 #3000000  10000 300000 90000 60000 210000
+
+INPUT:
+  PREDATASET:
+    EN: True
+  #True False
+    DIR: "/mnt/ssd2/rujie/predataset/coco/coco_2017_trainpre_11_130min640/" #"/mnt/ssd2/rujie/predataset/coco/coco_2017_trainpre_11_130/"  test /coco_2017_trainpre_11_130min640
+  RESIZE: True
+  #["horizontal, "vertical", "none"]
+  RANDOM_FLIP: "none"
+  MIN_SIZE_TRAIN: (640,) #(640,672,704,736,768,800)
+  MIN_SIZE_TEST: 640 #640
+VIS_PERIOD: 0
+OUTPUT_DIR: ./output_test/lvlossissue/ #./output_test output_300minbatch/stage2/
+VERSION: 2
+
+
+
